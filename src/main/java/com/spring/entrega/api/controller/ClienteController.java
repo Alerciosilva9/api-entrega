@@ -1,8 +1,10 @@
 package com.spring.entrega.api.controller;
 
-import java.util.Arrays;
+
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.entrega.domain.model.Cliente;
 import com.spring.entrega.domain.repository.ClienteRepository;
+import com.spring.entrega.domain.service.CrudClienteService;
 
 @RestController
 @RequestMapping("/clientes")
@@ -26,6 +29,9 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteRepository repository;
+	
+	@Autowired
+	private CrudClienteService service;
 	
 	@GetMapping
 	public List<Cliente> listar() {
@@ -44,15 +50,15 @@ public class ClienteController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente cadastrar(@RequestBody Cliente cliente) {
-		return repository.save(cliente);
+	public Cliente cadastrar(@Valid @RequestBody Cliente cliente) {
+		return service.salvar(cliente);
 	}
 	
 	@PutMapping("/{clienteId}")
-	public ResponseEntity<Cliente> atualizar(@RequestBody Cliente cliente, @PathVariable Long clienteId) {
+	public ResponseEntity<Cliente> atualizar(@Valid @RequestBody Cliente cliente, @PathVariable Long clienteId) {
 		if(repository.existsById(clienteId)) {
 			cliente.setId(clienteId);
-			cliente = repository.save(cliente);
+			cliente = service.salvar(cliente);
 			return ResponseEntity.ok(cliente);
 		}else {
 			return ResponseEntity.notFound().build();
@@ -62,7 +68,7 @@ public class ClienteController {
 	@DeleteMapping("/{clienteId}")
 	public ResponseEntity<Void> deletar(@PathVariable Long clienteId) {
 		if(repository.existsById(clienteId)) {
-			repository.deleteById(clienteId);
+			service.excluir(clienteId);
 			return ResponseEntity.noContent().build();
 		}else {
 			return ResponseEntity.notFound().build();
