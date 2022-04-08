@@ -25,6 +25,11 @@ public class CrudClienteService{
 		return repository.save(cliente);
 	}
 	
+	public Cliente buscar(Long clienteId) {
+		return repository.findById(clienteId)
+				.orElseThrow(() -> new NegocioException("cliente nao encontrado"));
+	}
+	
 	public void excluir(Long id) {
 		repository.deleteById(id);
 	}

@@ -1,5 +1,6 @@
 package com.spring.entrega.domain.model;
 
+import java.lang.Long;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
