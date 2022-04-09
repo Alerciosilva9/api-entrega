@@ -1,6 +1,7 @@
 package com.spring.entrega.domain.model;
 
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -10,9 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.groups.ConvertGroup;
+import javax.validation.groups.Default;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.spring.entrega.domain.ValidationGroups;
 
 @Entity
 public class Entrega {
@@ -20,8 +26,15 @@ public class Entrega {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Valid
+	@ConvertGroup(from = Default.class, to = ValidationGroups.ClienteId.class)
+	@NotNull
 	@ManyToOne
 	private Cliente cliente;
+	
+	@Valid
+	@NotNull
 	@Embedded
 	private Destinatario destinatario;
 	
@@ -29,12 +42,13 @@ public class Entrega {
 	@JsonProperty(access = Access.READ_ONLY)
 	private StatusEntrega status;
 	
-	private float taxa;
+	@NotNull
+	private BigDecimal taxa;
 	
 	@JsonProperty(access = Access.READ_ONLY)
-	private LocalDateTime data_pedido;
+	private OffsetDateTime data_pedido;
 	@JsonProperty(access = Access.READ_ONLY)
-	private LocalDateTime data_finalizacao;
+	private OffsetDateTime data_finalizacao;
 	
 	
 	@Override
@@ -86,22 +100,22 @@ public class Entrega {
 		this.status = status;
 	}
 	
-	public LocalDateTime getData_pedido() {
+	public OffsetDateTime getData_pedido() {
 		return data_pedido;
 	}
-	public void setData_pedido(LocalDateTime data_pedido) {
+	public void setData_pedido(OffsetDateTime data_pedido) {
 		this.data_pedido = data_pedido;
 	}
-	public LocalDateTime getData_finalizacao() {
+	public OffsetDateTime getData_finalizacao() {
 		return data_finalizacao;
 	}
-	public void setData_finalizacao(LocalDateTime data_finalizacao) {
+	public void setData_finalizacao(OffsetDateTime data_finalizacao) {
 		this.data_finalizacao = data_finalizacao;
 	}
-	public float getTaxa() {
+	public BigDecimal getTaxa() {
 		return taxa;
 	}
-	public void setTaxa(float taxa) {
+	public void setTaxa(BigDecimal taxa) {
 		this.taxa = taxa;
 	}
 	
