@@ -11,8 +11,8 @@ public class EntregaModel {
 	private String nomeCliente;
 	private BigDecimal taxa;
 	private StatusEntrega status;
-	private OffsetDateTime dataPedido;
-	private OffsetDateTime dataFinalizacao;
+	private OffsetDateTime data_pedido;
+	private OffsetDateTime data_finalizacao;
 	private DestinatarioModel destinatario;
 	public Long getId() {
 		return id;
@@ -38,23 +38,24 @@ public class EntregaModel {
 	public void setStatus(StatusEntrega status) {
 		this.status = status;
 	}
-	public OffsetDateTime getDataPedido() {
-		return dataPedido;
-	}
-	public void setDataPedido(OffsetDateTime dataPedido) {
-		this.dataPedido = dataPedido;
-	}
-	public OffsetDateTime getDataFinalizacao() {
-		return dataFinalizacao;
-	}
-	public void setDataFinalizacao(OffsetDateTime dataFinalizacao) {
-		this.dataFinalizacao = dataFinalizacao;
-	}
+	
 	public DestinatarioModel getDestinatario() {
 		return destinatario;
 	}
 	public void setDestinatario(DestinatarioModel destinatario) {
 		this.destinatario = destinatario;
+	}
+	public OffsetDateTime getData_pedido() {
+		return data_pedido;
+	}
+	public void setData_pedido(OffsetDateTime data_pedido) {
+		this.data_pedido = data_pedido;
+	}
+	public OffsetDateTime getData_finalizacao() {
+		return data_finalizacao;
+	}
+	public void setData_finalizacao(OffsetDateTime data_finalizacao) {
+		this.data_finalizacao = data_finalizacao;
 	}
 	
 	
