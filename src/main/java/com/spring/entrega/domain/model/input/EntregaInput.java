@@ -15,5 +15,29 @@ public class EntregaInput{
 	
 	@NotNull
 	private BigDecimal taxa;
+
+	public ClienteIdInput getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(ClienteIdInput cliente) {
+		this.cliente = cliente;
+	}
+
+	public DestinatarioInput getDestinatario() {
+		return destinatario;
+	}
+
+	public void setDestinatario(DestinatarioInput destinatario) {
+		this.destinatario = destinatario;
+	}
+
+	public BigDecimal getTaxa() {
+		return taxa;
+	}
+
+	public void setTaxa(BigDecimal taxa) {
+		this.taxa = taxa;
+	}
 	
 }
