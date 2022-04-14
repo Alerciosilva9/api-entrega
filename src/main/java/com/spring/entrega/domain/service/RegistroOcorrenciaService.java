@@ -1,13 +1,10 @@
 package com.spring.entrega.domain.service;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.spring.entrega.domain.exception.NegocioException;
 import com.spring.entrega.domain.model.Entrega;
 import com.spring.entrega.domain.model.Ocorrencia;
-import com.spring.entrega.domain.repository.EntregaRepository;
+
 
 @Service
 public class RegistroOcorrenciaService {

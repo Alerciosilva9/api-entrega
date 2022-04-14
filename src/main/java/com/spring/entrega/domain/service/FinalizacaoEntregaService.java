@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.entrega.domain.model.Entrega;
-import com.spring.entrega.domain.model.StatusEntrega;
 import com.spring.entrega.domain.repository.EntregaRepository;
 
 @Service

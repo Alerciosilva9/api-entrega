@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.entrega.domain.exception.EntidadeNaoEncontradaException;
-import com.spring.entrega.domain.exception.NegocioException;
 import com.spring.entrega.domain.model.Entrega;
 import com.spring.entrega.domain.repository.EntregaRepository;
 
